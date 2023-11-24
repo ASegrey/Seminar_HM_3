@@ -64,6 +64,7 @@ public class Program
             {
                 int size = 10; // массив из 10 элементов
                 int [] array = new int[size];
+                int count = 0;
                 for (int i = 0; i < size; i++)
                 {
                     array[i] = rand.Next(1, 101);
@@ -78,8 +79,11 @@ public class Program
                     {
                         System.Console.Write(", ");
                     }
+                    if ((array[item] >= 20) && (array[item] <= 90)){
+                        count++;
+                    }
                 }
-                System.Console.WriteLine("]");
+                System.Console.Write($"] => {count}");
             }
             if (task == 2)
             {
