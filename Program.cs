@@ -33,9 +33,72 @@ namespace HomeMadeSeminar3
 {
 public class Program
     {
-        public static void Main(string [] args){
-
+        public static void Main(string [] args)
+        {
+            System.Console.Write("Введите номер задачи (от 1 до 4) => ");
+            Tasks(NumberInTerminal(4));
         }
+
+        /*Функция ввода чисел в терминале*/
+        public static int NumberInTerminal(int numberDigits)
+        {
+            string ? numString = Console.ReadLine();
+            int numInt = 0;
+            while ((!Int32.TryParse(numString,out numInt)) 
+                    || !(numInt > 0) 
+                    || !(numInt < numberDigits)
+                  )
+            {
+                System.Console.WriteLine("Ошибка ввода, повторите");
+                System.Console.Write("Введите номер задачи (от 1 до 4) => ");
+                numString = Console.ReadLine(); 
+            }
+            return numInt;
+        }
+        public static void Tasks(int task)
+        {
+            Random rand = new Random();
+
+            System.Console.Write($"Задача №{task}:");
+            if (task == 1)
+            {
+                int size = 10; // массив из 10 элементов
+                int [] array = new int[size];
+                for (int i = 0; i < size; i++)
+                {
+                    array[i] = rand.Next(1, 101);
+                }
+                System.Console.WriteLine($"Задайте одномерный массив из 10 целых чисел от 1 до 100.");
+                System.Console.WriteLine("Найдите количество элементов массива, значения которых лежат в отрезке [20,90].");
+                System.Console.Write("Массив задается рандомно => [");
+                for (int item = 0; item < array.Length; item++)
+                {
+                    System.Console.Write($"{array[item]}");//(item + " ")
+                    if (item < array.Length-1)
+                    {
+                        System.Console.Write(", ");
+                    }
+                }
+                System.Console.WriteLine("]");
+            }
+            if (task == 2)
+            {
+                System.Console.WriteLine($"Задайте массив на 10 целых чисел. Напишите программу,");
+                System.Console.WriteLine("которая определяет количество чётных чисел в массиве.");
+            }
+            if (task == 3)
+            {
+                System.Console.WriteLine($"Задайте массив из вещественных чисел с ненулевой дробной частью.");
+                System.Console.WriteLine("Найдите разницу между максимальным и минимальным элементов массива.");
+            }
+            if (task == 4)
+            {
+                System.Console.WriteLine($"Дано натуральное число в диапазоне от 1 до 100 000.");
+                System.Console.WriteLine("Создайте массив, состоящий из цифр этого числа. Старший разряд числа должен");
+                System.Console.WriteLine("располагаться на 0-м индексе массива, младший – на последнем.");
+                System.Console.WriteLine("Размер массива должен быть равен количеству цифр.");
+            }
+        } 
     }
-    
+
 }
