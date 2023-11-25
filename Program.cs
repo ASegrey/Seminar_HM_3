@@ -71,6 +71,7 @@ public class Program
                 }
                 System.Console.WriteLine($"Задайте одномерный массив из 10 целых чисел от 1 до 100.");
                 System.Console.WriteLine("Найдите количество элементов массива, значения которых лежат в отрезке [20,90].");
+                System.Console.WriteLine("Решение");
                 System.Console.Write("Массив задается рандомно => [");
                 for (int item = 0; item < array.Length; item++)
                 {
@@ -89,11 +90,34 @@ public class Program
             {
                 System.Console.WriteLine($"Задайте массив на 10 целых чисел. Напишите программу,");
                 System.Console.WriteLine("которая определяет количество чётных чисел в массиве.");
+                System.Console.WriteLine("Решение");
+                int size = 10; // массив из 10 элементов
+                int [] array = new int[size];
+                int count = 0;
+                for (int i = 0; i < size; i++)
+                {
+                    array[i] = rand.Next(-100, 101); 
+                }
+                System.Console.Write("Массив задается рандомно => [");
+                for (int item = 0; item < array.Length; item++)
+                {
+                    System.Console.Write($"{array[item]}");//(item + " ")
+                    if (item < array.Length-1)
+                    {
+                        System.Console.Write(", ");
+                    }
+                    if (array[item]%2 == 0){
+                        count++;
+                    }
+                }
+                System.Console.Write($"] Количество четных чисел => {count}");
             }
             if (task == 3)
             {
                 System.Console.WriteLine($"Задайте массив из вещественных чисел с ненулевой дробной частью.");
                 System.Console.WriteLine("Найдите разницу между максимальным и минимальным элементов массива.");
+                System.Console.WriteLine("Решение");
+                
             }
             if (task == 4)
             {
