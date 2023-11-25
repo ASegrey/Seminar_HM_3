@@ -117,7 +117,34 @@ public class Program
                 System.Console.WriteLine($"Задайте массив из вещественных чисел с ненулевой дробной частью.");
                 System.Console.WriteLine("Найдите разницу между максимальным и минимальным элементов массива.");
                 System.Console.WriteLine("Решение");
-                
+                int minValue = 1;
+                int maxValue = 100;
+                int size = 10; // массив из 10 элементов
+                double [] array = new double[size];
+                int count = 0;
+                for (int i = 0; i < size; i++)
+                {
+                    array[i] = Math.Round(minValue + (maxValue - minValue) * rand.NextDouble(),2); 
+                }
+                double maxNum = array[0];
+                double minNum = array[0];
+                System.Console.Write("Массив задается рандомно => [");
+                for (int item = 0; item < array.Length; item++)
+                {
+                    System.Console.Write($"{array[item]}");//(item + " ")
+                    if (item < array.Length-1)
+                    {
+                        System.Console.Write(", ");
+                    }
+                    else{System.Console.WriteLine("]");}
+                    if (array[item] > maxNum){
+                        maxNum = array[item];
+                    }
+                    if (array[item] < minNum){
+                        minNum = array[item];
+                    }
+                }
+                System.Console.Write($"Разница между максимальным {maxNum} и минимальным {minNum} значением в массиве => {maxNum - minNum}");
             }
             if (task == 4)
             {
