@@ -35,22 +35,23 @@ public class Program
     {
         public static void Main(string [] args)
         {
-            System.Console.Write("Введите номер задачи (от 1 до 4) => ");
-            Tasks(NumberInTerminal(4));
+            string stringLoad = "Введите номер задачи (от 1 до 4) => ";
+            System.Console.Write(stringLoad);
+            Tasks(NumberInTerminal(4,stringLoad));
         }
 
         /*Функция ввода чисел в терминале*/
-        public static int NumberInTerminal(int numberDigits)
+        public static int NumberInTerminal(int numberDigits, string repeatString)
         {
             string ? numString = Console.ReadLine();
             int numInt = 0;
             while ((!Int32.TryParse(numString,out numInt)) 
                     || !(numInt > 0) 
-                    || !(numInt < numberDigits)
+                    || !(numInt <= numberDigits)
                   )
             {
                 System.Console.WriteLine("Ошибка ввода, повторите");
-                System.Console.Write("Введите номер задачи (от 1 до 4) => ");
+                System.Console.Write(repeatString);
                 numString = Console.ReadLine(); 
             }
             return numInt;
@@ -148,10 +149,40 @@ public class Program
             }
             if (task == 4)
             {
+                string stringLoad = "Введите натуральное число в диапазоне от 1 до 100 000 => ";
+                int number = 0;
+                int digitOfNum = 0;
+                int item = 1;
                 System.Console.WriteLine($"Дано натуральное число в диапазоне от 1 до 100 000.");
                 System.Console.WriteLine("Создайте массив, состоящий из цифр этого числа. Старший разряд числа должен");
                 System.Console.WriteLine("располагаться на 0-м индексе массива, младший – на последнем.");
                 System.Console.WriteLine("Размер массива должен быть равен количеству цифр.");
+                System.Console.WriteLine("Решение");
+                System.Console.Write(stringLoad);
+                number = NumberInTerminal(100000,stringLoad); //Считали число
+                System.Console.Write($"{number} => ");
+                if (number < 10){digitOfNum = 1;}
+                    else{
+                            digitOfNum = (int)Math.Log10(number) + 1;
+                        }
+                int [] array = new int[digitOfNum]; 
+                while (item <= digitOfNum)
+                {
+                    array[digitOfNum - item] = number%10;
+                    number /= 10;
+                    item++;
+                }
+                // Выводим массив
+                stringLoad = string.Empty;
+                for (int items = 0; items < array.Length; items++)
+                {
+                    stringLoad += array[items];
+                    if (items < array.Length-1)
+                    {
+                        stringLoad += " ";
+                    }
+                }
+                System.Console.Write("[" + stringLoad + "]");
             }
         } 
     }
